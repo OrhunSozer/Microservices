@@ -54,8 +54,8 @@ namespace FreeCourse.IdentityServer
                     {
                         userManager.CreateAsync(new ApplicationUser
                         {
-                            UserName = "orhunsozer",
-                            Email = "orhun.sozer@gmail.com",
+                            UserName = "aliveli",
+                            Email = "asdasdasd",
                             City = "İstanbul"
                         }, "orhun123*")
                             .Wait();
