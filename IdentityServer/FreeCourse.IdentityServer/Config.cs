@@ -55,13 +55,15 @@ namespace FreeCourse.IdentityServer
                 {
                     ClientName = "Asp.Net Core MVC",
                     ClientId= "WebMvcClientForUser",
-                    ClientSecrets= {new Secret("Secret".Sha256()) },
+                    AllowOfflineAccess = true,
+                    ClientSecrets= {new Secret("Secret".Sha256()) }, 
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     AllowedScopes = { 
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
+                        IdentityServerConstants.LocalApi.ScopeName,
                         "roles"
                     },
                     AccessTokenLifetime = 1*60*60,  //Token ömrü 1 saat
