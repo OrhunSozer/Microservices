@@ -10,6 +10,12 @@ namespace FreeCourse.IdentityServer.Services
     public class IdentityResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
         private readonly UserManager<ApplicationUser> _userManager;
+
+        public IdentityResourceOwnerPasswordValidator(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             var existUser = await _userManager.FindByEmailAsync(context.UserName);

@@ -28,7 +28,7 @@ namespace FreeCourse.IdentityServer
                            Name = "roles",
                            DisplayName="Roles",
                            Description="Kullanıcı Rolleri",
-                           UserClaims = new []{"role"}
+                           UserClaims = new []{ "role" }
                        }
                    };
 
