@@ -24,7 +24,7 @@ namespace FreeCourse.Services.Basket.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBasket()
         {
-            return CreateActionResultInstance(await basketService.GetBasket(sharedIdentityService.GetUserId);
+            return CreateActionResultInstance(await basketService.GetBasket(sharedIdentityService.GetUserId));
         }
 
         [HttpPost]
