@@ -30,6 +30,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{17E49C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Services.Basket", "Services\Basket\FreeCourse.Services.Basket\FreeCourse.Services.Basket.csproj", "{D193B60C-EF8B-46F2-B8E8-91F469488D65}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{5898886A-31B6-466C-84BF-3F0F1FF576E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Discount", "Services\Discount\FreeCourse.Services.Discount\FreeCourse.Services.Discount.csproj", "{87B8A7DD-85BE-45B1-B968-318AEF8899DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +60,10 @@ Global
 		{D193B60C-EF8B-46F2-B8E8-91F469488D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D193B60C-EF8B-46F2-B8E8-91F469488D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D193B60C-EF8B-46F2-B8E8-91F469488D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B8A7DD-85BE-45B1-B968-318AEF8899DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B8A7DD-85BE-45B1-B968-318AEF8899DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B8A7DD-85BE-45B1-B968-318AEF8899DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B8A7DD-85BE-45B1-B968-318AEF8899DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,8 @@ Global
 		{AE5342D1-44AB-425A-BA1F-1774F17F82D8} = {E0CCD787-4ECA-4C38-A4D1-983A75CA2EB4}
 		{17E49C6E-F773-421E-9E3E-F3AF7912065A} = {385CDAB5-A755-4E2C-BEC3-62AF2BF2FC58}
 		{D193B60C-EF8B-46F2-B8E8-91F469488D65} = {17E49C6E-F773-421E-9E3E-F3AF7912065A}
+		{5898886A-31B6-466C-84BF-3F0F1FF576E1} = {385CDAB5-A755-4E2C-BEC3-62AF2BF2FC58}
+		{87B8A7DD-85BE-45B1-B968-318AEF8899DB} = {5898886A-31B6-466C-84BF-3F0F1FF576E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9DE18E7E-7405-43ED-AD28-F77DC3D7AA6F}
