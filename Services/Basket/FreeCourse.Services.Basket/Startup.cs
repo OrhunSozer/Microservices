@@ -37,7 +37,7 @@ namespace FreeCourse.Services.Basket
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
-            //Catalog service is protected with jwt token.
+            //BAsket service is protected with jwt token.
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServerURL"];
