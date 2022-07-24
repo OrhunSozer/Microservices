@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreeCourse.Services.Order.Domain
+namespace FreeCourse.Services.Order.Domain.OrderAggregate
 {
     public class Order : Entity, IAggregateRoot
     {
