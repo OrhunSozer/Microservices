@@ -1,6 +1,10 @@
+using FreeCourse.Services.Order.Infrastructure;
+using FreeCourse.Shared.Services;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +29,16 @@ namespace FreeCourse.Services.Order.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<OrderDbContext>(opt =>
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), configure =>
+                {
+                    configure.MigrationsAssembly("FreeCourse.Services.Order.Infrastructure");
+                });
+            });
+            services.AddHttpContextAccessor();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddMediatR(typeof(FreeCourse.Services.Order.Application.Handlers.CreateOrderCommandHandler).Assembly);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
