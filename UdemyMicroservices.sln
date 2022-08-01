@@ -56,13 +56,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Gateway", "FreeC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{A85D2DC5-8C42-426F-A969-BBEAEC5BD637}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Web", "Frontends\FreeCourse.Web\FreeCourse.Web.csproj", "{5F416F41-34CB-4413-B3EE-CEC0A42BF9BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.Web", "Frontends\FreeCourse.Web\FreeCourse.Web.csproj", "{5F416F41-34CB-4413-B3EE-CEC0A42BF9BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.FakePayment", "Services\FakePayment\FreeCourse.Services.FakePayment\FreeCourse.Services.FakePayment.csproj", "{52023F94-E84C-4119-B350-2182BEB88923}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{87DD658C-1BA2-43DD-B2E5-F547732712CB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Gateway", "FreeCourse.Gateway\FreeCourse.Gateway.csproj", "{9A974A0E-C087-490E-81F0-2430DBF255BB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways (2)", "Gateways (2)", "{775DF48B-852B-4BB1-9D33-46C80FE7A137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
