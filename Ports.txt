@@ -1,7 +1,4 @@
 Services
-<<<<<<< Updated upstream
--catalog=>5011
-=======
 	-catalogAPI=>5011
 	-photoStockAPI=>5012
 	-basketAPI=>5013
@@ -11,4 +8,3 @@ Services
 -identityServer=>5001
 -gateway=>5000
 -web=>5010
->>>>>>> Stashed changes
