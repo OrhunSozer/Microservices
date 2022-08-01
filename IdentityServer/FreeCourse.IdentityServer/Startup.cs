@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FreeCourse.IdentityServer.Services;
 
 namespace FreeCourse.IdentityServer
 {
@@ -28,8 +29,9 @@ namespace FreeCourse.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddLocalApiAuthentication();
 
+            services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -48,13 +50,16 @@ namespace FreeCourse.IdentityServer
                 options.EmitStaticAudienceClaim = true;
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
 
+            
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
+            builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
@@ -68,7 +73,7 @@ namespace FreeCourse.IdentityServer
                 });
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app)  
         {
             if (Environment.IsDevelopment())
             {
@@ -80,6 +85,7 @@ namespace FreeCourse.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
