@@ -44,6 +44,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<Response<bool>> SignIn(SigninInput signinInput)
         {
+            //GetDiscoveryDocumentAsync methodu sayesinde IdentityServer'daki tüm endpointler getiriliyor.
             var disco = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
                 Address = _serviceApiSettings.BaseUri,
@@ -53,7 +54,7 @@ namespace FreeCourse.Web.Services
             {
                 throw disco.Exception;
             }
-
+            //Token için parametreler oluşturuluyor..
             var passwordTokenRequest = new PasswordTokenRequest
             {
                 ClientId = _clientSettings.WebClientForUser.ClientId,
@@ -62,7 +63,7 @@ namespace FreeCourse.Web.Services
                 Password = signinInput.Password,
                 Address = disco.TokenEndpoint
             };
-
+            //Token getiriliyor.
             var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
 
             if (token.IsError)
@@ -75,22 +76,25 @@ namespace FreeCourse.Web.Services
                 return Response<bool>.Fail(errorDto.Errors, 400);
             }
 
+            //Kullanıcı bilgileri için parametre oluşturuluyor.
             var userInfoRequest = new UserInfoRequest
             {
                 Token = token.AccessToken,
                 Address = disco.UserInfoEndpoint
             };
-
+            //Kullanıcı bilgileri geitirliyor.
             var userInfo = await _httpClient.GetUserInfoAsync(userInfoRequest);
             if (userInfo.IsError)
             {
                 throw userInfo.Exception;
             }
-
+            
+            //Cookie bazlı authentication için parametreler oluşturuluyor.
             ClaimsIdentity claimsIdentity = new ClaimsIdentity
                 (userInfo.Claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", "role");
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
+            //cookie de hangi itemlar olacak? Tanımlıyoruz...
             var authenticationProperties = new AuthenticationProperties();
             authenticationProperties.StoreTokens(new List<AuthenticationToken>
             {
@@ -101,9 +105,10 @@ namespace FreeCourse.Web.Services
                     Value = DateTime.Now.AddSeconds(token.ExpiresIn).ToString("o", CultureInfo.InvariantCulture)
                 }
             });
-
+            //Beni hatırla
             authenticationProperties.IsPersistent = signinInput.IsRemember;
 
+            //Cookie oluşturuluyor...
             await _httpContextAccessor.HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme
                 , claimsPrincipal
