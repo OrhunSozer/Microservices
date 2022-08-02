@@ -8,9 +8,9 @@ namespace FreeCourse.Web.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IIdentityServices _identityService;
+        private readonly IIdentityService _identityService;
 
-        public AuthController(IIdentityServices identityService)
+        public AuthController(IIdentityService identityService)
         {
             _identityService = identityService;
         }
