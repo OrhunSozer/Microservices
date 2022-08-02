@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Services.Interfaces
 {
-    interface IIdentityServices
+    public interface IIdentityServices
     {
         Task<Response<bool>> SignIn(SigninInput signinInput);
         Task<TokenResponse> GetAccessTokenByRefreshToken();
