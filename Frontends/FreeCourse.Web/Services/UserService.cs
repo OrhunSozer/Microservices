@@ -1,14 +1,23 @@
 ﻿using FreeCourse.Web.Models;
 using FreeCourse.Web.Services.Interfaces;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Services
 {
     public class UserService : IUserService
     {
-        public Task<UserViewModel> GetUser()
+        private readonly HttpClient _client;
+
+        public UserService(HttpClient client)
         {
-            throw new System.NotImplementedException();
+            _client = client;
+        }
+
+        public async Task<UserViewModel> GetUser()
+        {
+            return await _client.GetFromJsonAsync<UserViewModel>("/api/user/getuser");
         }
     }
 }
