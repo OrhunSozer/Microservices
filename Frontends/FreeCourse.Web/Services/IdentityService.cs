@@ -103,7 +103,6 @@ namespace FreeCourse.Web.Services
                 Token = refreshToken,
                 TokenTypeHint = "refresh_token"
             };
-
             await _httpClient.RevokeTokenAsync(tokenRevocationRequest);
         }
 
