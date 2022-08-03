@@ -52,7 +52,7 @@ namespace FreeCourse.Web.Services
             {
                 ClientId = _clientSettings.WebClientForUser.ClientId,
                 ClientSecret = _clientSettings.WebClientForUser.ClientSecret,
-                RefreshToken = refreshToken,
+                RefreshToken = refreshToken, //Artık username password yerine refresh_token ile yeni token alıyoruz...
                 Address = disco.TokenEndpoint
             };
 
