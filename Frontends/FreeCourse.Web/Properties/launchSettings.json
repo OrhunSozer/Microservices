@@ -1,10 +1,10 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:55687",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:53331/",
+      "sslPort": 44324
     }
   },
   "profiles": {
@@ -17,12 +17,11 @@
     },
     "FreeCourse.Web": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
-      "launchBrowser": false,
-      "applicationUrl": "http://localhost:5010",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5010",
+      "dotnetRunMessages": "true"
     }
   }
 }

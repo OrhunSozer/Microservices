@@ -30,7 +30,7 @@ namespace FreeCourse.Web.Controllers
 
             var response = await _identityService.SignIn(signInInput);
 
-            if (response.IsSuccesfull)
+            if (!response.IsSuccesfull)
             {
                 response.Errors.ForEach(x =>
                 {
