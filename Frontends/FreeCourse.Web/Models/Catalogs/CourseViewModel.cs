@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace FreeCourse.Services.Catalog.Dtos
+namespace FreeCourse.Web.Models.Catalogs
 {
-    public class CourseDto
+    public class CourseViewModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -11,8 +11,8 @@ namespace FreeCourse.Services.Catalog.Dtos
         public string UserId { get; set; }
         public string Picture { get; set; }
         public DateTime CreatedTime { get; set; }
-        public FeatureDto Future { get; set; }
+        public FeatureViewModel Future { get; set; }
         public string CategoryId { get; set; }
-        public CategoryDto Category { get; set; }
+        public CategoryViewModel Category { get; set; }
     }
 }
