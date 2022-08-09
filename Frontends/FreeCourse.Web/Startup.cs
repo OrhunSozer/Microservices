@@ -39,10 +39,13 @@ namespace FreeCourse.Web
 
             services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+            services.AddScoped<ClientCredentialtokenHandler>();
+
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-            });
+            }).AddHttpMessageHandler<ClientCredentialtokenHandler>();
+
             services.AddHttpClient<IIdentityService, IdentityService>();
             services.AddHttpClient<IUserService, UserService>(opt =>
             {

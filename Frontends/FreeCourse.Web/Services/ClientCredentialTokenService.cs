@@ -24,7 +24,7 @@ namespace FreeCourse.Web.Services
             _httpClient = httpClient;   
         }
 
-        public async Task<string> GetToken(string token)
+        public async Task<string> GetToken()
         {
             var currentToken = await _clientAccessTokenCache.GetAsync("WebClientToken", new ClientAccessTokenParameters());
             if (currentToken != null)
