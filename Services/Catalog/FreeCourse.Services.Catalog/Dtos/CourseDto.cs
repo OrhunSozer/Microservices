@@ -11,7 +11,7 @@ namespace FreeCourse.Services.Catalog.Dtos
         public string UserId { get; set; }
         public string Picture { get; set; }
         public DateTime CreatedTime { get; set; }
-        public FeatureDto Future { get; set; }
+        public FeatureDto Feature { get; set; }
         public string CategoryId { get; set; }
         public CategoryDto Category { get; set; }
     }
