@@ -8,7 +8,7 @@
         public decimal Price { get; set; }
         public string UserId { get; set; }
         public string Picture { get; set; }
-        public FeatureViewModel Future { get; set; }
+        public FeatureViewModel Feature { get; set; }
         public string CategoryId { get; set; }
     }
 }
