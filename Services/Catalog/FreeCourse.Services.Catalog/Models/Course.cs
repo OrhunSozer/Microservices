@@ -16,7 +16,7 @@ namespace FreeCourse.Services.Catalog.Models
         public string Picture { get; set; }
         [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
         public DateTime CreatedTime { get; set; }
-        public Future Future { get; set; }
+        public Feature Feature { get; set; }
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string CategoryId { get; set; }
         [BsonIgnore]

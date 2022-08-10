@@ -1,6 +1,6 @@
 ﻿namespace FreeCourse.Services.Catalog.Models
 {
-    public class Future
+    public class Feature
     {
         public int Duration { get; set; }
     }
