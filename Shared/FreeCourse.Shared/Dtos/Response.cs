@@ -7,11 +7,11 @@ namespace FreeCourse.Shared.Dtos
 {
     public class Response<T>
     {
-        public T Data { get; private set ; }
+        public T Data { get; set ; }
         [JsonIgnore]
-        public int StatusCode { get; private set; }
+        public int StatusCode { get; set; }
         [JsonIgnore]
-        public bool IsSuccesfull { get; private set; }
+        public bool IsSuccesfull { get; set; }
         public List<string> Errors { get; set; }
         public static Response<T> Success(T data, int statusCode)
         {
