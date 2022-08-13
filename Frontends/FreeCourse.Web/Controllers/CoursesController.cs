@@ -72,7 +72,8 @@ namespace FreeCourse.Web.Controllers
                 Price = course.Price,
                 Feature = course.Feature,
                 CategoryId = course.CategoryId,
-                UserId = course.UserId
+                UserId = course.UserId,
+                Picture = course.Picture
             };
 
             return View(courseUpdateInput);
