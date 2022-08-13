@@ -73,7 +73,7 @@ namespace FreeCourse.Web.Controllers
                 Feature = course.Feature,
                 CategoryId = course.CategoryId,
                 UserId = course.UserId,
-                Picture = course.Picture
+                Picture = course.Picture 
             };
 
             return View(courseUpdateInput);
