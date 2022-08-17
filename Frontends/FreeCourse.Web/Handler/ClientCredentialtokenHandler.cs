@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Web.Handler
 {
-    public class ClientCredentialtokenHandler : DelegatingHandler
+    public class ClientCredentialTokenHandler : DelegatingHandler
     {
         private readonly IClientCredentialTokenService _clientCredentialTokenService;
 
-        public ClientCredentialtokenHandler(IClientCredentialTokenService clientCredentialTokenService)
+        public ClientCredentialTokenHandler(IClientCredentialTokenService clientCredentialTokenService)
         {
             _clientCredentialTokenService = clientCredentialTokenService;
         }
