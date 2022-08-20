@@ -1,5 +1,8 @@
 ﻿using FreeCourse.Services.Basket.Dtos;
 using FreeCourse.Shared.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -7,33 +10,36 @@ namespace FreeCourse.Services.Basket.Services
 {
     public class BasketService : IBasketService
     {
-        private readonly RedisService redisService;
+        private readonly RedisService _redisService;
 
         public BasketService(RedisService redisService)
         {
-            this.redisService = redisService;
+            _redisService = redisService;
         }
 
         public async Task<Response<bool>> Delete(string userId)
         {
-            var status = await redisService.GetDb().KeyDeleteAsync(userId);
-            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket not found!", 404);
+            var status = await _redisService.GetDb().KeyDeleteAsync(userId);
+            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket not found", 404);
         }
 
-        public async Task<Response<BasketDTO>> GetBasket(string userId)
+        public async Task<Response<BasketDto>> GetBasket(string userId)
         {
-            var existBasket = await redisService.GetDb().StringGetAsync(userId);
-            if (string.IsNullOrEmpty(existBasket))
+            var existBasket = await _redisService.GetDb().StringGetAsync(userId);
+
+            if (String.IsNullOrEmpty(existBasket))
             {
-                return Response<BasketDTO>.Fail("Basket not found!", 404);
+                return Response<BasketDto>.Fail("Basket not found", 404);
             }
-            return Response<BasketDTO>.Success(JsonSerializer.Deserialize<BasketDTO>(existBasket), 200);
+
+            return Response<BasketDto>.Success(JsonSerializer.Deserialize<BasketDto>(existBasket), 200);
         }
 
-        public async Task<Response<bool>> SaveOrUpdate(BasketDTO basketDTO)
+        public async Task<Response<bool>> SaveOrUpdate(BasketDto basketDto)
         {
-            var status = await redisService.GetDb().StringSetAsync(basketDTO.UserId, JsonSerializer.Serialize(basketDTO));
-            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket could not save or update!", 500);
+            var status = await _redisService.GetDb().StringSetAsync(basketDto.UserId, JsonSerializer.Serialize(basketDto));
+
+            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket could not update or save", 500);
         }
     }
 }

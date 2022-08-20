@@ -6,9 +6,9 @@ namespace FreeCourse.Services.Basket.Services
 {
     public interface IBasketService
     {
-        Task<Response<BasketDTO>> GetBasket(string userId);
+        Task<Response<BasketDto>> GetBasket(string userId);
 
-        Task<Response<bool>> SaveOrUpdate(BasketDTO basketDTO);
+        Task<Response<bool>> SaveOrUpdate(BasketDto basketDTO);
 
         Task<Response<bool>> Delete(string userId);
     }
