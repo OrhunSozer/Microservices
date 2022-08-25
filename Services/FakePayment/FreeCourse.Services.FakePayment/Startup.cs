@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -29,11 +30,22 @@ namespace FreeCourse.Services.FakePayment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMassTransit(x =>
+            {
+                // Default Port : 5672
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+                });
+            });
+
+            services.AddMassTransitHostedService();
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
-
-            //Payment service is protected with jwt token.
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServerURL"];
@@ -44,7 +56,8 @@ namespace FreeCourse.Services.FakePayment
             services.AddControllers(opt =>
             {
                 opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
-            }); services.AddSwaggerGen(c =>
+            });
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.FakePayment", Version = "v1" });
             });
@@ -61,10 +74,8 @@ namespace FreeCourse.Services.FakePayment
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
