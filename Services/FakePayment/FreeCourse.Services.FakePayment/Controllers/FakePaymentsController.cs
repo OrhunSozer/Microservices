@@ -26,9 +26,11 @@ namespace FreeCourse.Services.FakePayment.Controllers
             var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new System.Uri("queue:create-order-service"));
             var createOrderMessageCommand = new CreateOrderMessageCommand();
             createOrderMessageCommand.BuyerId = paymentDto.Order.BuyerId;
+            createOrderMessageCommand.District = paymentDto.Order.Address.District;
             createOrderMessageCommand.Province = paymentDto.Order.Address.Province;
             createOrderMessageCommand.Street = paymentDto.Order.Address.Street;
             createOrderMessageCommand.Line = paymentDto.Order.Address.Line;
+            createOrderMessageCommand.ZipCode = paymentDto.Order.Address.ZipCode;
             paymentDto.Order.OrderItems.ForEach(x => {
                 createOrderMessageCommand.OrderItems.Add(new OrderItem
                 {
