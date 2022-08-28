@@ -88,17 +88,16 @@ namespace FreeCourse.IdentityServer
                     AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds,   //Refresh token ömrü
                     RefreshTokenUsage = TokenUsage.ReUse
                 },
-                new Client
+                 new Client
                 {
-                    ClientName = "Token Exchange Client",
-                    ClientId= "TokenExchangeClient",
-                    ClientSecrets= {new Secret("Secret".Sha256()) },
-                    AllowedGrantTypes = new [] {"urn:ietf:params:oauth:grant-type:token-exchange" },
-                    AllowedScopes = {
-                        "discount_fullpermission",
-                        "payment_fullpermission",
-                        IdentityServerConstants.StandardScopes.OpenId
-                    }
+                   ClientName="Token Exchange Client",
+                    ClientId="TokenExhangeClient",
+                    ClientSecrets= {new Secret("Secret".Sha256())},
+                    AllowedGrantTypes= new []{ "urn:ietf:params:oauth:grant-type:token-exchange" },
+                    AllowedScopes={
+                         "discount_fullpermission"
+                         , "payment_fullpermission"
+                         ,IdentityServerConstants.StandardScopes.OpenId }
                 },
             };
     }
