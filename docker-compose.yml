@@ -4,7 +4,7 @@ services:
     image: mongo:latest
   basketdb:
     image: redis:latest
-  discount:
+  discountdb:
     image: postgres:latest
   identitydb:
     image: mcr.microsoft.com/mssql/server:2019-latest
