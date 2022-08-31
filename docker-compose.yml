@@ -1,20 +1,19 @@
 version: '3.8'
 services:
   catalogdb:
-    image: mongo
+    image: mongo:latest
   basketdb:
-    image: redis
+    image: redis:latest
   discount:
-    image: posgres
+    image: postgres:latest
   identitydb:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
   orderdb:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
   rabbitmq:
-    image: rabbitmq:3.8.14-management
+    image: rabbitmq:3.10.7-management
 volumes:
   catalogdb_volume:
   discount_volume:
   identitydb_volume:
   orderdb_volume:
-  
