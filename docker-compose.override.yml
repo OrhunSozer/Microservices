@@ -70,3 +70,14 @@ services:
       - "5001:80"
     depends_on:
       - identitydb
+  basket.api:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api
+      - RedisSettings:Port=6379
+      - RedisSettings:Host=basketdb
+    ports:
+      - "5013:80"
+    depends_on:
+      - basketdb
