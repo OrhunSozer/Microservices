@@ -72,6 +72,12 @@ Our microservice responsible for keeping and presenting course photos.
 
 The data she received from microservices was shown to the user and our UI microservice that will be responsible for interacting with the user.
 
+![Auth20](https://user-images.githubusercontent.com/3118268/194930899-d72c4c89-932e-4e8c-88df-e420480c725c.png)
+
+
+
+* Note: This project was carried out using the following course. 
+* https://www.udemy.com/course/net-ile-microservices/
 
 
 
